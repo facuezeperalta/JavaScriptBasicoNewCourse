@@ -9,3 +9,4 @@ const discountP = 10
 const finalprice = calculateDiscountedPrice(originalPrice,discountP)
 
 console.log(finalprice);
+
