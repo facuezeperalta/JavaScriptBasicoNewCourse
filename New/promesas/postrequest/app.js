@@ -43,13 +43,30 @@ async function fetchPost (){
   
       listElement.append(postContainer);
     }
+}
 
+async function createPost(title,content){
+  const userId = Math.random();
+  //generamos la estructura de lo que se va a enviar al servidor.
+  const post = {
+    title: title,
+    body: content,
+    userId : userId,
+  };
+  //hacemos el request:
+  sendHTTPRequest("POST","https://jsonplaceholder.typicode.com/posts",post);
 
 }
 
 
 fetchButton.addEventListener("click",fetchPost);
 
+form.addEventListener("click",(event) =>{
+  event.preventDefault();
+  const title = event.currentTarget.querySelector("#title").value;
+  const content = event.currentTarget.querySelector("#content").value;
+  createPost(title,content);
+})
 
 
 
